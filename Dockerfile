@@ -1,4 +1,4 @@
-FROM deliveryagent/centos
+FROM centos
 MAINTAINER Tommy McNeely <tommy@lark-it.com>
 
 # Install dependencies
@@ -14,7 +14,7 @@ RUN yum -y install \
  && yum clean all
 
 # Install awslogs agent
-ENV REGION="us-west-2"
+ENV REGION="ap-east-1"
 COPY awslogs.conf awslogs.conf
 RUN curl -sSL https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py -o awslogs-agent-setup.py \
  && python ./awslogs-agent-setup.py -n -r $REGION -c /awslogs.conf \
